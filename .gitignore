@@ -12,3 +12,4 @@ data/raw/*
 .vscode/
 .idea/
 data/processed/*
+*.egg-info/
