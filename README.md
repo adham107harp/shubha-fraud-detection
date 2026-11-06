@@ -52,6 +52,22 @@ tests/             Automated tests (pytest)
 docs/              Proposal, diagrams, report, AI-use statement, progress log
 ```
 
+## Architecture
+
+Three layers, kept separate on purpose so each can be replaced later.
+
+```
+Analyst console (Flask pages)  -->  Scoring API (POST /score)  -->  Model (NaiveBayes + rules)
+                                              |
+                                              v
+                                   SQLite: transactions, alerts, analyst decisions
+```
+
+- **Model** (`src/shubha/ai/`): a class with `fit`, `predict_proba`, `predict`, `save`, `load`. Swapping in another model must not change the other layers.
+- **API** (`src/shubha/web/`): `POST /score` receives a transaction and returns `{probability, verdict, reasons, model_version}`.
+- **Console** (`src/shubha/web/`): pages call the API like any other client.
+- **Database** (`src/shubha/db/schema.sql`): every prediction is logged with `model_version`, and the analyst's decision is stored next to it. These decisions are the training data for future models.
+
 ## Workflow
 
 - One-week sprints on GitHub Projects.
