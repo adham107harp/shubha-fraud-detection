@@ -1,4 +1,4 @@
-# Shubha (شُبهة) — Mobile-Wallet Fraud Detection
+# Shubha — Mobile-Wallet Fraud Detection
 
 Integrated Mega Project, Fall 2026 — School of Computing and Data Science, Badya University.
 Courses: CS 312 Programming with Python, AI 306 Probability and Statistics for Data Science, CO 208 Introduction to AI.
